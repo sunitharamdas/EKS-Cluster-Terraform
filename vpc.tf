@@ -3,7 +3,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-data "aws_availability_zones" "available" {}
+# data "aws_availability_zones" "available" {}
 
 locals {
   cluster_name = "test-eks-${random_string.suffix.result}"
@@ -21,8 +21,8 @@ module "vpc" {
   name                 = "test-eks-vpc"
   cidr                 = var.vpc_cidr
   azs                  = data.aws_availability_zones.available.names
-  private_subnets      = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets       = ["10.0.4.0/24", "10.0.5.0/24"]
+  private_subnets      = ["10.0.10.0/24", "10.0.11.0/24"]
+  public_subnets       = ["10.0.12.0/24", "10.0.13.0/24"]
   enable_nat_gateway   = true
   single_nat_gateway   = true
   enable_dns_hostnames = true
